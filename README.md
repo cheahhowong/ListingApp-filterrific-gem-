@@ -3,7 +3,7 @@
 This repo contains scaffold of Users and Listings, where User has many Listings.
 
 ### Instructions to start
-1. Clone this repo.
+1. Fork this repo.
 2. Run `bundle install`
 3. Run `rails db:create && db:migrate && db:seed`
 4. Run `rails s`
