@@ -11,6 +11,8 @@ This repo contains scaffold of Users and Listings, where User has many Listings.
 ### Instructions to implement
 1. Implement [Filterrific](https://github.com/jhund/filterrific) gem into `Listings#index`. Refer to documentation on how it works.
 2. Filter features:
-  * Search by Listing title.
-  * Select (dropdown) by Listing country.
-  * Select (dropdown) by Listing num_beds.
+    * Search by Listing title.
+    * Select (dropdown) by Listing country.
+    * Select (dropdown) by Listing num_beds.
+    * Sorted by num_baths and num_beds.
+    * [BONUS] Search by User name.
