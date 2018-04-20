@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  listings: MyString
+  user: one
+  title: MyString
+  country: MyString
+  num_beds: 1
+  num_bath: 1
+  price_per_night: 1
+
+two:
+  listings: MyString
+  user: two
+  title: MyString
+  country: MyString
+  num_beds: 1
+  num_bath: 1
+  price_per_night: 1

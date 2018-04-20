@@ -1,0 +1,52 @@
+<%= form_with(model: listing, local: true) do |form| %>
+  <% if listing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
+
+      <ul>
+      <% listing.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :listings %>
+    <%= form.text_field :listings, id: :listing_listings %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :listing_user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :listing_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :country %>
+    <%= form.text_field :country, id: :listing_country %>
+  </div>
+
+  <div class="field">
+    <%= form.label :num_beds %>
+    <%= form.number_field :num_beds, id: :listing_num_beds %>
+  </div>
+
+  <div class="field">
+    <%= form.label :num_bath %>
+    <%= form.number_field :num_bath, id: :listing_num_bath %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price_per_night %>
+    <%= form.number_field :price_per_night, id: :listing_price_per_night %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
