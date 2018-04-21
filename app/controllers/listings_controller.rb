@@ -4,7 +4,23 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-    @listings = Listing.all
+
+    @filterrific = initialize_filterrific(
+        Listing,
+        params[:filterrific],
+        select_options: {
+            sorted_by: Listing.options_for_sorted_by,
+            with_country: Listing.options_for_select,
+            with_num_bed: Listing.options_for_select_bed
+        },
+
+    ) or return
+    @listings = @filterrific.find.page(params[:page])
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /listings/1

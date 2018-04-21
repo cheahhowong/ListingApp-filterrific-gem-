@@ -2,37 +2,56 @@
 
 <h1>Listings</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Listings ID</th>
-      <th>User Name</th>
-      <th>Title</th>
-      <th>Country</th>
-      <th>Num beds</th>
-      <th>Num bath</th>
-      <th>Price per night</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<%= form_for_filterrific @filterrific, html: { id: 'filterrific-no-ajax-auto-submit' } do |f| %>
+  <div>
+    Country
+    <%= f.select(
+        :with_country,
+        @filterrific.select_options[:with_country],
+        { include_blank: '- Any -' }
+        ) %>
+  </div>
 
-  <tbody>
-    <% @listings.each do |listing| %>
-      <tr>
-        <td><%= listing.id %></td>
-        <td><%= listing.user.name %></td>
-        <td><%= listing.title %></td>
-        <td><%= listing.country %></td>
-        <td><%= listing.num_beds %></td>
-        <td><%= listing.num_bath %></td>
-        <td><%= listing.price_per_night %></td>
-        <td><%= link_to 'Show', listing %></td>
-        <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
-        <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div>
+    Sorted By
+    <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by]) %>
+  </div>
+
+  <div>
+    Num of Beds
+    <%= f.select(
+        :with_num_bed, 
+        @filterrific.select_options[:with_num_bed],
+        { include_blank: '- Any -' }
+        ) %>
+  </div>
+
+  <div>
+    Search Title
+    <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
+    <%= f.text_field(
+      :search_query,
+      class: 'filterrific-periodically-observed'
+    ) %>
+  </div>
+
+  <br>
+
+  <div>
+    <%= link_to(
+      'Reset filters',
+      reset_filterrific_url,
+    ) %>
+  </div>
+
+  <br>
+
+  <%= f.submit 'Filter' %>
+  
+<% end %>
+
+<%= render 'listings/listing', locals: { listings: @listings } %>
+
 
 <br>
 
